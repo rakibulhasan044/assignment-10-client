@@ -4,11 +4,6 @@ import ThemeBtn from "./ThemeBtn";
 //import artlogo from '../../public/artlogo.png'
 
 const Navbar = () => {
-    // const [darkMood, setDarkMood] = useState(false);
-
-    // const toggleDarkMood = () => {
-    //     setDarkMood(!darkMood)
-    // }
   
   const links = (
     <>
@@ -60,7 +55,7 @@ const Navbar = () => {
           </ul>
         </div>
         <a className="h-16 lg:flex lg:items-center hidden">
-            <img className="w-40 b-" src="https://i.postimg.cc/HnZkWRZH/artlogo.png" />
+            <img className="w-40" src="https://i.postimg.cc/HnZkWRZH/artlogo.png" />
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">

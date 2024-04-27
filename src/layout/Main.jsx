@@ -24,7 +24,6 @@ const Main = () => {
         <ThemeProvider value={{themeMode, darkTheme, lightTheme}}>
         <div className="container mx-auto dark:bg-neutral-900">
             <Navbar></Navbar>
-            <h2>Main</h2>
             <Outlet/>
         </div>
         </ThemeProvider>
