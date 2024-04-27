@@ -1,11 +1,16 @@
 import { useState } from "react";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 const AddCraft = () => {
   const [customization, setCustomization] = useState("");
   const [stock, setStock] = useState("");
+  const [subcategory, setSubcategory] = useState("");
 
   const handleCustomizationChange = (event) => {
     setCustomization(event.target.value);
+  };
+
+  const handleCategory = (e) => {
+    setSubcategory(e.target.value);
   };
 
   const handleStockChange = (event) => {
@@ -15,7 +20,6 @@ const AddCraft = () => {
     event.preventDefault();
     const form = event.target;
     const itemName = form.itemName.value;
-    const subcategory = form.subcategory.value;
     const description = form.description.value;
     const price = form.price.value;
     const rating = form.rating.value;
@@ -24,33 +28,45 @@ const AddCraft = () => {
     const userName = form.userName.value;
     const userEmail = form.userEmail.value;
     //console.log(itemName, subcategory, price, description, rating,time, photourl, userName, userEmail);
-    const newCraft = { itemName, subcategory, price, description, rating,time, photourl, userName, userEmail, stock, customization}
+    const newCraft = {
+      itemName,
+      subcategory,
+      price,
+      description,
+      rating,
+      time,
+      photourl,
+      userName,
+      userEmail,
+      stock,
+      customization,
+    };
     console.log("Selected customization:", customization);
     console.log("Selected stock:", stock);
     console.log(newCraft);
-    fetch('http://localhost:5005/crafts', {
-      method: 'POST',
+    fetch("http://localhost:5005/crafts", {
+      method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(newCraft)
+      body: JSON.stringify(newCraft),
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      if(data.insertedId){
-        Swal.fire({
-            title: 'Success!',
-            text: 'Coffee Added Successfully',
-            icon: 'success',
-            confirmButtonText: 'Done'
-        })
-    }
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Coffee Added Successfully",
+            icon: "success",
+            confirmButtonText: "Done",
+          });
+        }
+      });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="px-5">
+    <form onSubmit={handleSubmit} className="px-5 dark:bg-purple-950">
       <div className="flex gap-5">
         <div className=" flex-1">
           <div className="form-control">
@@ -71,15 +87,17 @@ const AddCraft = () => {
             <label className="label">
               <span className="label-text">Subcategory</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="subcategory"
-                placeholder="subcategory"
-                required
-                className="input input-bordered w-full"
-              />
-            </label>
+            <select
+              className="input-group p-3 border border-gray-300 rounded-lg"
+              onChange={handleCategory}
+            >
+              <option value="Landscape Painting">Landscape Painting</option>
+              <option value="Portrait Drawing"> Portrait Drawing</option>
+              <option value="Watercolour Painting">Watercolour Painting</option>
+              <option value="Oil Painting">Oil Painting</option>
+              <option value="Charcoal Sketching">Charcoal Sketching</option>
+              <option value="Cartoon Drawing">Cartoon Drawing</option>
+            </select>
           </div>
           <div className="form-control">
             <label className="label">
