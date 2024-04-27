@@ -1,8 +1,14 @@
+import { useLoaderData } from "react-router-dom";
+import CraftSection from "../components/CraftSection";
 
 const Home = () => {
+
+    const crafts = useLoaderData([])
+    
     return (
         <div>
-            <h3>home</h3>
+            <h3>home: {crafts.length}</h3>
+            <CraftSection crafts={crafts}/>
         </div>
     );
 };
