@@ -3,7 +3,7 @@ import { IoColorPaletteOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 const CraftCard = ({craft}) => {
-    const {photourl, itemName, price, subcategory, stock} = craft
+    const { _id, photourl, itemName, price, subcategory, stock} = craft
     return (
         <div className="flex gap-5 font-medium">
             <img className="h-[200px] border-4 border-black" src={photourl} alt="" />
@@ -18,7 +18,7 @@ const CraftCard = ({craft}) => {
                 {subcategory}
             </div>
                 <p>Status: {stock}</p>
-                <Link to='details' className="btn btn-sm bg-secondary text-gray-200">View details</Link>
+                <Link to={`/craftDetails/${_id}`} className="btn btn-sm bg-secondary text-gray-200">View details</Link>
             </div>
         </div>
     );
