@@ -1,24 +1,39 @@
-//import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import ThemeBtn from "./ThemeBtn";
-//import artlogo from '../../public/artlogo.png'
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Navbar = () => {
-  
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    logOut()
+    .then(alert('done'))
+    .catch( error => {
+      console.log(error);
+    })
+  }
+
   const links = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/allArtCraft" className="dark:text-blue-600">All Art & craft Items</NavLink>
+        <NavLink to="/allArtCraft" className="dark:text-blue-600">
+          All Art & craft Items
+        </NavLink>
       </li>
-      <li>
+      {
+        user ? <>
+        <li>
         <NavLink to="/addCraft">Add Craft Item</NavLink>
       </li>
       <li>
         <NavLink to="/myArtCraft">My Art & Craft List</NavLink>
       </li>
+        </> : ''
+      }
       <li>
         <NavLink to="/login">Login</NavLink>
       </li>
@@ -55,17 +70,35 @@ const Navbar = () => {
           </ul>
         </div>
         <a className="h-12 flex items-center ">
-            <img className="w-40" src="https://i.postimg.cc/HnZkWRZH/artlogo.png" />
+          <img
+            className="w-40"
+            src="https://i.postimg.cc/HnZkWRZH/artlogo.png"
+          />
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 flex gap-2">{links}</ul>
       </div>
       <div className="navbar-end gap-3">
-        <ThemeBtn/>
-          <Link to="/login" className="btn btn-sm bg-gray-200">
-            Login
-          </Link>
+        <ThemeBtn />
+        <div className="avatar gap-3">
+          {user ? (
+            <>
+              <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              </div>
+              <a onClick={handleSignOut} className="btn btn-sm  bg-gray-200">
+              Log Out
+            </a>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="btn btn-sm bg-gray-200">
+                Login
+              </Link>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
