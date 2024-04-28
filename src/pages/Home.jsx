@@ -7,7 +7,6 @@ const Home = () => {
     
     return (
         <div>
-            <h3>home: {crafts.length}</h3>
             <CraftSection crafts={crafts}/>
         </div>
     );
