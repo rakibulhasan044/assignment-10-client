@@ -1,12 +1,33 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
+
+  const { signIn, googleLogin } = useContext(AuthContext);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password)
+    .then(alert('done'))
+    .catch(error => {
+      console.log(error);
+    })
+
+  }
+  
   return (
     <div className="min-h-[calc(100vh-80px)] bg-base-200 dark:bg-neutral-900">
       <div className="hero-content pt-[15%]">
         <div className="text-center lg:text-left"></div>
         <div className="card shrink-0 w-5/6  md:w-2/3 lg:w-3/5 shadow-2xl bg-base-100">
-          <form className="card-body ">
+          <form className="card-body"
+          onSubmit={handleLogin}>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
