@@ -4,8 +4,18 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, loader } = useContext(AuthContext);
 
+  setTimeout(() => {
+    if (loader) {
+        return (
+            <div className='flex justify-center items-center'>
+                <div className="loading loading-spinner text-error w-[80px]"></div>
+            </div>
+        );
+    }
+  }, 2000);
+  
   const handleSignOut = () => {
     logOut()
     .then(alert('done'))
@@ -85,7 +95,7 @@ const Navbar = () => {
           {user ? (
             <>
               <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                <img src={user?.photoURL}/>
               </div>
               <a onClick={handleSignOut} className="btn btn-sm  bg-gray-200">
               Log Out
