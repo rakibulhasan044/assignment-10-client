@@ -5,7 +5,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AllArt from "../pages/AllArt";
 import AddCraft from "../pages/AddCraft";
-import ArtList from "../pages/ArtList";
+import ArtList from "../pages/MyList";
 import PrivateRoute from "./PrivateRoute";
 import CraftDetails from "../pages/CraftDetails";
 
@@ -41,12 +41,13 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/myArtCraft",
+        path: "/myArtCraft/:email",
         element: (
           <PrivateRoute>
             <ArtList />
           </PrivateRoute>
         ),
+        loader: ({params}) => fetch(`http://localhost:5005/crafts/user/${params.email}`)
       },
       {
         path: "/craftDetails/:id",

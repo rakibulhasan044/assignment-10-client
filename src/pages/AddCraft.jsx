@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../providers/AuthProvider";
+
 const AddCraft = () => {
+
   const [customization, setCustomization] = useState("");
   const [stock, setStock] = useState("");
   const [subcategory, setSubcategory] = useState("");
+  const { user } = useContext(AuthContext)
 
   const handleCustomizationChange = (event) => {
     setCustomization(event.target.value);
@@ -16,7 +20,9 @@ const AddCraft = () => {
   const handleStockChange = (event) => {
     setStock(event.target.value);
   };
+
   const handleSubmit = (event) => {
+
     event.preventDefault();
     const form = event.target;
     const itemName = form.itemName.value;
@@ -25,9 +31,9 @@ const AddCraft = () => {
     const rating = form.rating.value;
     const time = form.time.value;
     const photourl = form.photourl.value;
-    const userName = form.userName.value;
-    const userEmail = form.userEmail.value;
-    //console.log(itemName, subcategory, price, description, rating,time, photourl, userName, userEmail);
+    const userName = user.displayName;
+    const userEmail = user.email
+
     const newCraft = {
       itemName,
       subcategory,
@@ -41,9 +47,6 @@ const AddCraft = () => {
       stock,
       customization,
     };
-    console.log("Selected customization:", customization);
-    console.log("Selected stock:", stock);
-    console.log(newCraft);
     fetch("http://localhost:5005/crafts", {
       method: "POST",
       headers: {
@@ -89,6 +92,7 @@ const AddCraft = () => {
             </label>
             <select
               className="input-group p-3 border border-gray-300 rounded-lg"
+              required
               onChange={handleCategory}
             >
               <option value="Landscape Painting">Landscape Painting</option>
@@ -203,7 +207,8 @@ const AddCraft = () => {
               <input
                 type="email"
                 name="userEmail"
-                placeholder="User Email"
+                value={user.email || null}
+                readOnly
                 required
                 className="input input-bordered w-full"
               />
@@ -217,7 +222,8 @@ const AddCraft = () => {
               <input
                 type="text"
                 name="userName"
-                placeholder="User Name"
+                value={user.displayName || 'null'}
+                readOnly
                 required
                 className="input input-bordered w-full"
               />

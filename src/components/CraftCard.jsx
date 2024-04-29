@@ -6,7 +6,7 @@ const CraftCard = ({craft}) => {
     const { _id, photourl, itemName, price, subcategory, stock} = craft
     return (
         <div className="flex gap-5 font-medium">
-            <img className="h-[200px] border-4 border-black" src={photourl} alt="" />
+            <img className="h-[250px] border-4 border-black" src={photourl} alt="" />
             <div className="space-y-2">
             <p>{itemName}</p>
             <div className="flex items-center">

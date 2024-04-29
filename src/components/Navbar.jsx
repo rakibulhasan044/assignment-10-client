@@ -4,17 +4,18 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Navbar = () => {
-  const { user, logOut, loader } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-  setTimeout(() => {
-    if (loader) {
-        return (
-            <div className='flex justify-center items-center'>
-                <div className="loading loading-spinner text-error w-[80px]"></div>
-            </div>
-        );
-    }
-  }, 2000);
+
+  // setTimeout(() => {
+  //   if (loader) {
+  //       return (
+  //           <div className='flex justify-center items-center'>
+  //               <div className="loading loading-spinner text-error w-[80px]"></div>
+  //           </div>
+  //       );
+  //   }
+  // }, 2000);
   
   const handleSignOut = () => {
     logOut()
@@ -40,7 +41,7 @@ const Navbar = () => {
         <NavLink to="/addCraft">Add Craft Item</NavLink>
       </li>
       <li>
-        <NavLink to="/myArtCraft">My Art & Craft List</NavLink>
+        <NavLink to={`/myArtCraft/${user.email}`}>My Art & Craft List</NavLink>
       </li>
         </> : ''
       }
