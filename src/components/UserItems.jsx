@@ -1,7 +1,12 @@
 import { BsCurrencyDollar } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const UserItems = ({ item }) => {
+const UserItems = ({ item, list, setList }) => {
+
+  console.log(list);
+
+
     const {
         _id,
         itemName,
@@ -17,6 +22,39 @@ const UserItems = ({ item }) => {
         customization,
       } = item;
       const intRating = parseInt(rating);
+      const handleDelete = id => {
+        console.log(id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5005/crafts/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your Coffee has been deleted.',
+                                'success'
+                            )
+                            const remaining = list.filter(item => item._id !== id);
+                            setList(remaining);
+                            console.log(list);
+                        }
+                    })
+
+            }
+        })
+    }
       return (
         <div className="flex flex-col md:flex-row gap-10 mt-5 px-5 md:px-10">
           <div className="h-[500px] lg:h-[506px] w-[380px] lg:w-[380px] border-8 border-black">
@@ -57,7 +95,8 @@ const UserItems = ({ item }) => {
             <Link to={`/update/${_id}`} className="btn btn-sm btn-accent text-white">
                 Edit
                 </Link>
-                <button className="btn btn-sm btn-error text-white">
+                <button className="btn btn-sm btn-error text-white"
+                onClick={() => handleDelete(_id)}>
                     Delete
                 </button>
           </div>

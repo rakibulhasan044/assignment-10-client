@@ -4,11 +4,11 @@ import UserItems from "../components/UserItems";
 
 
 
-
 const MyList = () => {
     const myList = useLoaderData();
-    console.log(myList);
+    //console.log(myList);
     const [list, setList] = useState(myList)
+    // console.log(list);
     return (
         <div>
             <h2>item mylist: {myList.length}</h2>
@@ -16,7 +16,10 @@ const MyList = () => {
             <div className="grid gap-10">
                 {
                     list.map(item => <UserItems key={item._id}
-                    item={item}></UserItems>)
+                    item={item}
+                    list={list}
+                    setList={setList}
+                    ></UserItems>)
                 }
             </div> 
             
