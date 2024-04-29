@@ -1,30 +1,84 @@
 import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
 
 const UpdateCraft = () => {
 
-  const [customization, setCustomization] = useState("");
-  const [stock, setStock] = useState("");
-  const [subcategory, setSubcategory] = useState("");
+  const craft = useLoaderData()
+  console.log(craft);
+
+  const {
+    _id,
+    itemName,
+    price,
+    description,
+    rating,
+    time,
+    photourl,
+    userName,
+    userEmail,
+    
+  } = craft;
+  console.log(craft.customization);
+  console.log(_id);
+
+  const [customization, setCustomization] = useState(craft.customization);
+  const [stock, setStock] = useState(craft.stock);
+  const [subcategory, setSubcategory] = useState(craft.subcategory);
 
     const handleSubmit = (e) => {
       e.preventDefault();
-
+      const form = e.target;
+    const itemName = form.itemName.value;
+    const description = form.description.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const time = form.time.value;
+    const photourl = form.photourl.value;
+    const updateCraft = {
+      itemName,
+      subcategory,
+      price,
+      description,
+      rating,
+      time,
+      photourl,
+      stock,
+      customization
     }
+      fetch(`http://localhost:5005/crafts/${_id}`, {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(updateCraft)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          console.log('Craft modified successfully')
+          alert('hoise')
+        }
+      })
+    }
+    
 
     const handleCategory = (e) => {
-      e.preventDefault();
+      setSubcategory(e.target.value)
     }
 
     const handleStockChange = e => {
-      e.preventDefault();
+      setStock(e.target.value)
     }
 
     const handleCustomizationChange = (e) => {
-      e.preventDefault();
+      setCustomization(e.target.value);
     }
     return (
         <form onSubmit={handleSubmit} className="px-5 dark:bg-purple-950">
+          <h1>{userName}</h1>
+          <h2>{userEmail}</h2>
       <div className="flex flex-col md:flex-row gap-5">
         <div className=" flex-1">
           <div className="form-control">
@@ -36,7 +90,7 @@ const UpdateCraft = () => {
                 type="text"
                 name="itemName"
                 placeholder="Item Name"
-                required
+                defaultValue={itemName}
                 className="input input-bordered w-full"
               />
             </label>
@@ -47,7 +101,7 @@ const UpdateCraft = () => {
             </label>
             <select
               className="input-group p-3 border border-gray-300 rounded-lg"
-              required
+              defaultValue={subcategory}
               onChange={handleCategory}
             >
               <option value="Landscape Painting">Landscape Painting</option>
@@ -67,7 +121,7 @@ const UpdateCraft = () => {
                 type="text"
                 name="description"
                 placeholder="Description"
-                required
+                defaultValue={description}
                 className="input input-bordered w-full"
               />
             </label>
@@ -80,7 +134,6 @@ const UpdateCraft = () => {
                 type="radio"
                 value="in stock"
                 name="stock"
-                required
                 checked={stock === "in stock"}
                 onChange={handleStockChange}
               />
@@ -91,7 +144,6 @@ const UpdateCraft = () => {
                 type="radio"
                 value="order"
                 name="stock"
-                required
                 checked={stock === "order"}
                 onChange={handleStockChange}
               />
@@ -102,7 +154,6 @@ const UpdateCraft = () => {
                 type="radio"
                 value="out of stock"
                 name="stock"
-                required
                 checked={stock === "out of stock"}
                 onChange={handleStockChange}
               />
@@ -121,7 +172,7 @@ const UpdateCraft = () => {
                 type="text"
                 name="time"
                 placeholder="Processing Time"
-                required
+                defaultValue={time}
                 className="input input-bordered w-full"
               />
             </label>
@@ -135,7 +186,7 @@ const UpdateCraft = () => {
                 type="number"
                 name="price"
                 placeholder="Price"
-                required
+                defaultValue={price}
                 className="input input-bordered w-full"
               />
             </label>
@@ -149,7 +200,7 @@ const UpdateCraft = () => {
                 type="number"
                 name="rating"
                 placeholder="1-10"
-                required
+                defaultValue={rating}
                 className="input input-bordered w-full"
               />
             </label>
@@ -162,7 +213,6 @@ const UpdateCraft = () => {
                 type="radio"
                 value="yes"
                 name="custom"
-                required
                 checked={customization === "yes"}
                 onChange={handleCustomizationChange}
               />
@@ -173,7 +223,6 @@ const UpdateCraft = () => {
                 type="radio"
                 value="no"
                 name="custom"
-                required
                 checked={customization === "no"}
                 onChange={handleCustomizationChange}
               />
@@ -191,7 +240,7 @@ const UpdateCraft = () => {
             type="text"
             name="photourl"
             placeholder="Photo URL"
-            required
+            defaultValue={photourl}
             className="input input-bordered w-full"
           />
         </label>

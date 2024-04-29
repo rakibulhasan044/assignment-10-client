@@ -61,10 +61,11 @@ const router = createBrowserRouter([
           fetch(`http://localhost:5005/crafts/${params.id}`),
       },
       {
-        path: '/update',
+        path: '/update/:id',
         element: <PrivateRoute>
           <UpdateCraft/>
-        </PrivateRoute>
+        </PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5005/crafts/${params.id}`),
       }
     ],
   },

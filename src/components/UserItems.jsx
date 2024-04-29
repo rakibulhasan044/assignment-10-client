@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const UserItems = ({ item }) => {
     const {
+        _id,
         itemName,
         subcategory,
         price,
@@ -53,7 +54,7 @@ const UserItems = ({ item }) => {
             </div>
             <p><span className="font-medium text-primary">Description: </span>{description}</p>
             <div className="flex gap-14">
-            <Link to='/update' className="btn btn-sm btn-accent text-white">
+            <Link to={`/update/${_id}`} className="btn btn-sm btn-accent text-white">
                 Edit
                 </Link>
                 <button className="btn btn-sm btn-error text-white">
