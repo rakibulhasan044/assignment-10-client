@@ -32,7 +32,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink to="/allArtCraft" className="dark:text-blue-600">
-          All Art & craft Items
+          All craft Items
         </NavLink>
       </li>
       {
@@ -41,7 +41,7 @@ const Navbar = () => {
         <NavLink to="/addCraft">Add Craft Item</NavLink>
       </li>
       <li>
-        <NavLink to={`/myArtCraft/${user.email}`}>My Art & Craft List</NavLink>
+        <NavLink to={`/myArtCraft/${user.email}`}>My Craft List</NavLink>
       </li>
         </> : ''
       }
@@ -80,7 +80,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="h-12 flex items-center ">
+        <a className="h-12 flex items-center">
           <img
             className="w-40"
             src="https://i.postimg.cc/HnZkWRZH/artlogo.png"
@@ -88,7 +88,7 @@ const Navbar = () => {
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 flex gap-2">{links}</ul>
+        <ul className="menu menu-horizontal flex gap-2">{links}</ul>
       </div>
       <div className="navbar-end gap-3">
         <ThemeBtn />

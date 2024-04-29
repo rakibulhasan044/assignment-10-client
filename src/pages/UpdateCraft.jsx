@@ -1,75 +1,30 @@
-import { useContext, useState } from "react";
-import Swal from "sweetalert2";
-import { AuthContext } from "../providers/AuthProvider";
+import { useState } from "react";
 
-const AddCraft = () => {
+
+const UpdateCraft = () => {
 
   const [customization, setCustomization] = useState("");
   const [stock, setStock] = useState("");
   const [subcategory, setSubcategory] = useState("");
-  const { user } = useContext(AuthContext)
 
-  const handleCustomizationChange = (event) => {
-    setCustomization(event.target.value);
-  };
+    const handleSubmit = (e) => {
+      e.preventDefault();
 
-  const handleCategory = (e) => {
-    setSubcategory(e.target.value);
-  };
+    }
 
-  const handleStockChange = (event) => {
-    setStock(event.target.value);
-  };
+    const handleCategory = (e) => {
+      e.preventDefault();
+    }
 
-  const handleSubmit = (event) => {
+    const handleStockChange = e => {
+      e.preventDefault();
+    }
 
-    event.preventDefault();
-    const form = event.target;
-    const itemName = form.itemName.value;
-    const description = form.description.value;
-    const price = form.price.value;
-    const rating = form.rating.value;
-    const time = form.time.value;
-    const photourl = form.photourl.value;
-    const userName = user.displayName;
-    const userEmail = user.email
-
-    const newCraft = {
-      itemName,
-      subcategory,
-      price,
-      description,
-      rating,
-      time,
-      photourl,
-      userName,
-      userEmail,
-      stock,
-      customization,
-    };
-    fetch("http://localhost:5005/crafts", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newCraft),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          Swal.fire({
-            title: "Success!",
-            text: "Coffee Added Successfully",
-            icon: "success",
-            confirmButtonText: "Done",
-          });
-        }
-      });
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="px-5 dark:bg-purple-950">
+    const handleCustomizationChange = (e) => {
+      e.preventDefault();
+    }
+    return (
+        <form onSubmit={handleSubmit} className="px-5 dark:bg-purple-950">
       <div className="flex flex-col md:flex-row gap-5">
         <div className=" flex-1">
           <div className="form-control">
@@ -112,20 +67,6 @@ const AddCraft = () => {
                 type="text"
                 name="description"
                 placeholder="Description"
-                required
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Rating</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="number"
-                name="rating"
-                placeholder="1-10"
                 required
                 className="input input-bordered w-full"
               />
@@ -201,29 +142,13 @@ const AddCraft = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">User Email</span>
+              <span className="label-text">Rating</span>
             </label>
             <label className="input-group">
               <input
-                type="email"
-                name="userEmail"
-                value={user.email || null}
-                readOnly
-                required
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">User Name</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="userName"
-                value={user.displayName || 'null'}
-                readOnly
+                type="number"
+                name="rating"
+                placeholder="1-10"
                 required
                 className="input input-bordered w-full"
               />
@@ -271,9 +196,9 @@ const AddCraft = () => {
           />
         </label>
       </div>
-      <input type="submit" value="Add Craft" className="btn btn-block my-5" />
+      <input type="submit" value="Update Craft" className="btn btn-block my-5" />
     </form>
-  );
+    );
 };
 
-export default AddCraft;
+export default UpdateCraft;

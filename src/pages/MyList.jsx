@@ -13,7 +13,7 @@ const MyList = () => {
         <div>
             <h2>item mylist: {myList.length}</h2>
             <h3>item state list: {list.length}</h3>
-            <div>
+            <div className="grid gap-10">
                 {
                     list.map(item => <UserItems key={item._id}
                     item={item}></UserItems>)

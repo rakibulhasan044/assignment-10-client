@@ -2,7 +2,9 @@ import { useLoaderData } from "react-router-dom";
 import { BsCurrencyDollar } from "react-icons/bs";
 
 const CraftDetails = () => {
+
   const craft = useLoaderData();
+  
   const {
     itemName,
     subcategory,
@@ -16,10 +18,13 @@ const CraftDetails = () => {
     stock,
     customization,
   } = craft;
+
   const intRating = parseInt(rating);
   return (
-    <div className="flex flex-col md:flex-row gap-10 mt-5 px-5 md:px-10">
-      <img className="h-[500px] lg:h-[600px] w-[380px] lg:w-[420px] border-8 border-black" src={photourl} alt="" />
+    <div className="flex flex-col md:flex-row gap-10 mt-5 px-5 md:px-10 py-10">
+      <div className="h-[406px] lg:h-[506px] w-[316px] lg:w-[380px] border-8 border-black">
+            <img className="h-[390px] lg:h-[490px] w-[300px] lg:w-[370px] border-8 border-white" src={photourl} alt="" />
+            </div>
       <div className="space-y-2 flex-1">
         <p className="text-2xl font-bold">{itemName}</p>
         <hr />
@@ -46,6 +51,7 @@ const CraftDetails = () => {
               value="1"
               className="mask mask-star-2 bg-orange-400"
               checked={index === intRating - 1}
+              readOnly
             />
           ))}
         </div>
