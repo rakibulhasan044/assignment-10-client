@@ -43,7 +43,7 @@ const CraftDetails = () => {
             <p>{userEmail}</p>
         </div>
         <div className="rating">
-          {[...Array(10)].map((_, index) => (
+          {[...Array(5)].map((_, index) => (
             <input
               key={index}
               type="radio"

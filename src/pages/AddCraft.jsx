@@ -207,8 +207,8 @@ const AddCraft = () => {
               <input
                 type="email"
                 name="userEmail"
-                value={user.email || null}
-                readOnly
+                value={user.email}
+                
                 required
                 className="input input-bordered w-full dark:bg-[#ECE0F5] dark:text-black"
               />
@@ -222,8 +222,7 @@ const AddCraft = () => {
               <input
                 type="text"
                 name="userName"
-                value={user.displayName || 'null'}
-                readOnly
+                value={user.displayName}
                 required
                 className="input input-bordered w-full dark:bg-[#ECE0F5] dark:text-black"
               />
