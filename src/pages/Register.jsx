@@ -1,11 +1,14 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+
 
 const Register = () => {
 
   const {createUser, user, setUser, profileUpdate} = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
 
   const handleRegistration = (event) => {
@@ -15,16 +18,46 @@ const Register = () => {
     const email = form.email.value;
     const photourl = form.photourl.value;
     const password = form.password.value;
+
+    const uppercaseRegex = /[A-Z]/;
+    const lowercaseRegex = /[a-z]/;
+    const lengthRegex = /.{6,}/;
+
+    if (!lengthRegex.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Password must be longer than 6 character!`,
+      });
+      return;
+    } 
+    if (!uppercaseRegex.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Please include a uppercase character!`,
+      });
+      return;
+    }
+    if (!lowercaseRegex.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Please include a lowercase character!`,
+      });
+      return;
+    }
+
     createUser(email, password)
     .then(result => {
       console.log(result.user);
-      console.log(result.user);
       Swal.fire({
         title: 'Success!',
-        text: 'Coffee Added Successfully',
+        text: 'Welcome to Artista',
         icon: 'success',
         confirmButtonText: 'Successfully registered'
     })
+    navigate(location?.state ? location.state : '/')
       profileUpdate(name, photourl)
       .then(() => {
         setUser({...user, displplayName: name, photoURL: photourl})

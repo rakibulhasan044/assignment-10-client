@@ -2,6 +2,9 @@ import { Link, NavLink } from "react-router-dom";
 import ThemeBtn from "./ThemeBtn";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import Swal from 'sweetalert2'
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -19,9 +22,21 @@ const Navbar = () => {
   
   const handleSignOut = () => {
     logOut()
-    .then(alert('done'))
+    .then(
+      Swal.fire({
+        title: 'Success!',
+        text: 'Successfully log out',
+        icon: 'success',
+        confirmButtonText: 'Successfully log out'
+    })
+    )
     .catch( error => {
       console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Something went wrong! ${error.message}`,
+      });
     })
   }
 
@@ -96,7 +111,8 @@ const Navbar = () => {
           {user ? (
             <>
               <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src={user?.photoURL}/>
+                <img src={user?.photoURL} data-tooltip-id="my-tooltip" data-tooltip-content={`${user.displayName}`}/>
+                <Tooltip id="my-tooltip" />
               </div>
               <a onClick={handleSignOut} className="btn btn-sm  bg-gray-200">
               Log Out

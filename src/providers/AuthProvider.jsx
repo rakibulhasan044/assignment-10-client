@@ -9,6 +9,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loader, setLoader] = useState(true);
     const googleProvider = new GoogleAuthProvider();
+    const githubProider = new githubProider()
 
 
     const createUser = (email, password) =>{
@@ -20,6 +21,10 @@ const AuthProvider = ({ children }) => {
         setLoader(true)
         return signInWithPopup(auth, googleProvider)
     } 
+
+    const githubLogin = () => {
+        return signInWithPopup(auth, githubProider)
+    }
 
     const signIn = (email, password) => {
         setLoader(true)
@@ -58,6 +63,7 @@ const AuthProvider = ({ children }) => {
         profileUpdate,
         signIn,
         googleLogin,
+        githubLogin,
         logOut
     }
 

@@ -21,7 +21,7 @@ const Login = () => {
       console.log(result.user);
       Swal.fire({
         title: 'Success!',
-        text: 'Coffee Added Successfully',
+        text: 'Welcome back',
         icon: 'success',
         confirmButtonText: 'Successfully login'
     })

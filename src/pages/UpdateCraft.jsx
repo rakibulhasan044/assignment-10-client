@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const UpdateCraft = () => {
@@ -57,12 +58,15 @@ const UpdateCraft = () => {
       .then(data => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          console.log('Craft modified successfully')
-          alert('hoise')
+          Swal.fire({
+            title: "Success!",
+            text: "Craft Added Successfully",
+            icon: "success",
+            confirmButtonText: "Done",
+          });
         }
       })
     }
-    
 
     const handleCategory = (e) => {
       setSubcategory(e.target.value)
