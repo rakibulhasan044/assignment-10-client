@@ -2,13 +2,42 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from 'sweetalert2'
+import toast from 'react-hot-toast';
+import { FaGoogle } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
 
 const Login = () => {
 
-  const { signIn, googleLogin } = useContext(AuthContext);
+  const { signIn, googleLogin, githubLogin,user, setUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const handleGoogleLogin = () => {
+    googleLogin()
+    .then(result => {
+      console.log(result.user);
+      toast.success('Login Successfully')
+      setUser({...user, displayName: result.user?.displayName, photoURL: result.user?.photoURL})
+      console.log(result.user?.photoURL);
+    })
+    .catch((error) => {
+      console.log(error.message);
+      toast.error(error.message)
+    });
+  }
 
+  const handleGithubLogin = () => {
+    githubLogin()
+    .then(result => {
+      console.log(result.user);
+      toast.success('Login Successfully')
+      setUser({...user, displayName: result.user?.displayName, photoURL: result.user?.photoURL})
+      console.log(result.user?.photoURL);
+    })
+    .catch((error) => {
+      console.log(error.message);
+      toast.error(error.message)
+    });
+  }
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -36,7 +65,6 @@ const Login = () => {
       });
       
     })
-
   }
   
   return (
@@ -72,6 +100,10 @@ const Login = () => {
             </div>
             <div className="form-control pt-5">
               <button className="btn btn-primary dark:bg-secondary">Login</button>
+              <ul className="flex gap-10 items-center justify-center pt-5">
+          <li onClick={handleGoogleLogin}><FaGoogle size={30}/></li>
+          <li onClick={handleGithubLogin}><FaGithub size={30}/></li>
+        </ul>
               <p className="py-3">Do not have an account? <Link to="/register" className="text-primary dark:text-secondary font-semibold">Register here</Link> </p>
             </div>
           </form>

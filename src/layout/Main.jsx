@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { ThemeProvider } from "../contexts/theme";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
+import { Toaster } from 'react-hot-toast'
 
 
 const Main = () => {
@@ -27,6 +28,7 @@ const Main = () => {
             <Navbar></Navbar>
             <Outlet/>
             <Footer/>
+            <Toaster/>
         </div>
         </ThemeProvider>
     );
