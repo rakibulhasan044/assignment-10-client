@@ -96,7 +96,7 @@ const AddCraft = () => {
               onChange={handleCategory}
             >
               <option value="Landscape Painting">Landscape Painting</option>
-              <option value="Portrait Drawing"> Portrait Drawing</option>
+              <option value="Portrait Drawing">Portrait Drawing</option>
               <option value="Watercolour Painting">Watercolour Painting</option>
               <option value="Oil Painting">Oil Painting</option>
               <option value="Charcoal Sketching">Charcoal Sketching</option>
