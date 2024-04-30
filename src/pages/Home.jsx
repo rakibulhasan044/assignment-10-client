@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import CraftSection from "../components/CraftSection";
 import Banner from "../components/Banner";
 import OrginalCollection from "../components/OrginalCollection";
+import OurPartner from "../components/OurPartner";
 
 const Home = () => {
 
@@ -12,6 +13,7 @@ const Home = () => {
             <Banner/>
             <CraftSection crafts={crafts}/>
             <OrginalCollection/>
+            <OurPartner/>
         </div>
     );
 };
