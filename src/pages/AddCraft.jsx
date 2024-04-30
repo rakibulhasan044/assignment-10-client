@@ -67,14 +67,14 @@ const AddCraft = () => {
         }
       });
   };
-
+// dark:bg-gradient-to-r from-[#532D84] to-[#532],from-[#2E1658] to-[#120632]
   return (
-    <form onSubmit={handleSubmit} className="px-5 dark:bg-purple-950 min-h-[calc(100vh-122px)]">
+    <form onSubmit={handleSubmit} className="px-5 md:pt-24 lg:pt-28 bg-[#D2B48C] dark:bg-gradient-to-r from-[#3D155D] to-[#1F0D31] min-h-[calc(100vh-122px)]">
       <div className="flex flex-col md:flex-row gap-5">
         <div className=" flex-1">
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Item Name</span>
+              <span className="label-text dark:text-white">Item Name</span>
             </label>
             <label className="input-group">
               <input
@@ -82,16 +82,16 @@ const AddCraft = () => {
                 name="itemName"
                 placeholder="Item Name"
                 required
-                className="input input-bordered w-full"
+                className="input input-bordered w-full dark:bg-[#ECE0F5]"
               />
             </label>
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Subcategory</span>
+              <span className="label-text dark:text-white">Subcategory</span>
             </label>
             <select
-              className="input-group p-3 border border-gray-300 rounded-lg"
+              className="input-group p-3 border border-gray-300 rounded-lg dark:text-black dark:bg-[#ECE0F5]"
               required
               onChange={handleCategory}
             >
@@ -105,7 +105,7 @@ const AddCraft = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Description</span>
+              <span className="label-text dark:text-white">Description</span>
             </label>
             <label className="input-group">
               <input
@@ -113,26 +113,26 @@ const AddCraft = () => {
                 name="description"
                 placeholder="Description"
                 required
-                className="input input-bordered w-full"
+                className="input input-bordered w-full dark:bg-[#ECE0F5]"
               />
             </label>
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Rating</span>
+              <span className="label-text dark:text-white">Rating</span>
             </label>
             <label className="input-group">
               <input
                 type="number"
                 name="rating"
-                placeholder="1-10"
+                placeholder="1-5"
                 required
-                className="input input-bordered w-full"
+                className="input input-bordered w-full dark:bg-[#ECE0F5]"
               />
             </label>
           </div>
           <div className="flex items-center pt-5">
-            <span className="label-text pr-2">Stock Status: </span>
+            <span className="label-text pr-2 dark:text-white">Stock Status: </span>
 
             <label>
               <input
@@ -154,7 +154,7 @@ const AddCraft = () => {
                 checked={stock === "order"}
                 onChange={handleStockChange}
               />
-              <span className="px-1 lg:px-3">Order</span>
+              <span className="px-1 lg:px-3 dark:text-white">Order</span>
             </label>
             <label>
               <input
@@ -165,7 +165,7 @@ const AddCraft = () => {
                 checked={stock === "out of stock"}
                 onChange={handleStockChange}
               />
-              <span className="px-1 lg:px-3">Out of stock</span>
+              <span className="px-1 lg:px-3 dark:text-white">Out of stock</span>
             </label>
           </div>
         </div>
@@ -173,7 +173,7 @@ const AddCraft = () => {
           {/* 2nd */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Processing Time</span>
+              <span className="label-text dark:text-white">Processing Time</span>
             </label>
             <label className="input-group">
               <input
@@ -181,13 +181,13 @@ const AddCraft = () => {
                 name="time"
                 placeholder="Processing Time"
                 required
-                className="input input-bordered w-full"
+                className="input input-bordered w-full dark:bg-[#ECE0F5]"
               />
             </label>
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Price</span>
+              <span className="label-text dark:text-white">Price</span>
             </label>
             <label className="input-group">
               <input
@@ -195,13 +195,13 @@ const AddCraft = () => {
                 name="price"
                 placeholder="Price"
                 required
-                className="input input-bordered w-full"
+                className="input input-bordered w-full dark:bg-[#ECE0F5]"
               />
             </label>
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">User Email</span>
+              <span className="label-text dark:text-white">User Email</span>
             </label>
             <label className="input-group">
               <input
@@ -210,13 +210,13 @@ const AddCraft = () => {
                 value={user.email || null}
                 readOnly
                 required
-                className="input input-bordered w-full"
+                className="input input-bordered w-full dark:bg-[#ECE0F5] dark:text-black"
               />
             </label>
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">User Name</span>
+              <span className="label-text dark:text-white">User Name</span>
             </label>
             <label className="input-group">
               <input
@@ -225,12 +225,12 @@ const AddCraft = () => {
                 value={user.displayName || 'null'}
                 readOnly
                 required
-                className="input input-bordered w-full"
+                className="input input-bordered w-full dark:bg-[#ECE0F5] dark:text-black"
               />
             </label>
           </div>
           <div className="flex items-center pt-5">
-            <span className="label-text pr-5">Customaization: </span>
+            <span className="label-text pr-5 dark:text-white">Customaization: </span>
 
             <label>
               <input
@@ -259,7 +259,7 @@ const AddCraft = () => {
       </div>
       <div className="form-control">
         <label className="label">
-          <span className="label-text">Photo URL</span>
+          <span className="label-text dark:text-white">Photo URL</span>
         </label>
         <label className="input-group">
           <input
@@ -267,11 +267,11 @@ const AddCraft = () => {
             name="photourl"
             placeholder="Photo URL"
             required
-            className="input input-bordered w-full"
+            className="input input-bordered w-full dark:bg-[#ECE0F5]"
           />
         </label>
       </div>
-      <input type="submit" value="Add Craft" className="btn btn-block my-5" />
+      <input type="submit" value="Add Craft" className="btn btn-block my-5 text-white bg-[#331A15] dark:bg-[#250530]" />
     </form>
   );
 };

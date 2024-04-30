@@ -23,7 +23,7 @@ const Main = () => {
     },[themeMode])
     return (
         <ThemeProvider value={{themeMode, darkTheme, lightTheme}}>
-        <div className="container mx-auto dark:bg-neutral-900">
+        <div className="container mx-auto dark:bg-gradient-to-r from-[#3D155D] to-[#1F0D31] dark:text-white">
             <Navbar></Navbar>
             <Outlet/>
             <Footer/>

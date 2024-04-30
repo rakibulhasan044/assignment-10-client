@@ -6,13 +6,13 @@ const Banner = () => {
   return (
     <div className="carousel w-full ">
       <div id="slide1" className="carousel-item relative w-full ">
-        <section className="dark:bg-gray-100 dark:text-gray-800 border w-full md:h-[380px] lg:h-[484px]">
+        <section className="dark:bg-gradient-to-r from-[#3D155D] to-[#1F0D31] dark:text-gray-200 border w-full md:h-[380px] lg:h-[484px]">
           <div className="flex flex-col justify-center lg:gap-16 pt-5 lg:py-20 md:flex-row lg:justify-between">
             <div className="flex  flex-col justify-center text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left md:pl-14 lg:pl-20">
               <h1 className="lg:text-4xl font-bold leading-none sm:text-5xl">
                 Welcome to
                 <br />
-                <span className="dark:text-violet-600"> ArtiSta</span>
+                <span className="dark:text-red-700"> ArtiSta</span>
               </h1>
               <p className="mt-6 mb-8 text-lg sm:mb-12">
                 Discover the world trough vision of the art and merge with the
@@ -48,12 +48,12 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide2" className="carousel-item relative w-full">
-        <section className="dark:bg-gray-100 dark:text-gray-800 border w-full md:h-[380px] lg:h-[484px]">
+        <section className="dark:bg-gray-100 dark:dark:bg-gradient-to-r from-[#3D155D] to-[#1F0D31] border w-full md:h-[380px] lg:h-[484px]">
           <div className="flex flex-col justify-center lg:gap-16 pt-5 lg:py-20 md:flex-row lg:justify-between">
             <div className="flex  flex-col justify-center text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left md:pl-14 lg:pl-20">
               <h1 className="lg:text-4xl font-bold leading-none sm:text-5xl">
                 Our
-                <span className="dark:text-violet-600"> ArtiSta </span>
+                <span className="dark:text-red-700"> ArtiSta </span>
                 history
               </h1>
               <p className="mt-6 mb-8 text-lg sm:mb-12">
@@ -90,7 +90,7 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide3" className="carousel-item relative w-full">
-        <section className="dark:bg-gray-100 dark:text-gray-800 border w-full md:h-[380px] lg:h-[484px]">
+        <section className="dark:bg-gray-100 dark:bg-gradient-to-r from-[#3D155D] to-[#1F0D31] border w-full md:h-[380px] lg:h-[484px]">
           <div className="flex flex-col justify-center lg:gap-16 pt-5 lg:py-20 md:flex-row lg:justify-between">
             <div className="flex  flex-col justify-center text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left md:pl-14 lg:pl-20">
               <h1 className="lg:text-4xl font-bold leading-none sm:text-6xl">

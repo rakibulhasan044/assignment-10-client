@@ -6,7 +6,7 @@ const CraftCard = ({craft}) => {
     const { _id, photourl, itemName, price, subcategory, stock} = craft
     return (
         <div className="flex gap-5 font-medium">
-            <img className="h-[250px] border-4 border-black" src={photourl} alt="" />
+            <img className="h-[250px] border-4 border-[#CFAE7A]" src={photourl} alt="" />
             <div className="space-y-2">
             <p>{itemName}</p>
             <div className="flex items-center">
@@ -18,7 +18,7 @@ const CraftCard = ({craft}) => {
                 {subcategory}
             </div>
                 <p>Status: {stock}</p>
-                <Link to={`/craftDetails/${_id}`} className="btn btn-sm bg-secondary text-gray-200">View details</Link>
+                <Link to={`/craftDetails/${_id}`} className="btn btn-sm bg-[#CFAE7A] text-gray-200 dark:bg-[#893271]">View details</Link>
             </div>
         </div>
     );

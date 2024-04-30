@@ -57,14 +57,14 @@ const UserItems = ({ item, list, setList, index }) => {
     }
       return (
         <div className="flex flex-col md:flex-row gap-10 mt-5 px-5 md:px-10">
-          <div className="h-[500px] lg:h-[506px] w-[380px] lg:w-[380px] border-8 border-black">
+          <div className="h-[500px] lg:h-[506px] w-[380px] lg:w-[380px] border-8 border-black dark:border-[#893271]">
             <img className="h-[490px] lg:h-[490px] w-[380px] lg:w-[370px] border-8 border-white" src={photourl} alt="" />
             </div>
           <div className="space-y-2 flex-1 flex flex-col justify-center">
             <p className="text-2xl font-bold">{itemName}</p>
             <hr />
             <p>Subcategory: {subcategory}</p>
-            <div className="flex items-center font-bold text-xl">
+            <div className="flex items-center font-bold text-xl text-red-700">
               <BsCurrencyDollar size={20} />
               {price}
             </div>
@@ -90,7 +90,7 @@ const UserItems = ({ item, list, setList, index }) => {
                 />
               ))}
             </div>
-            <p><span className="font-medium text-primary">Description: </span>{description}</p>
+            <p><span className="font-medium text-primary dark:text-secondary">Description: </span>{description}</p>
             <div className="flex gap-14">
             <Link to={`/update/${_id}`} className="btn btn-sm btn-accent text-white">
                 Edit

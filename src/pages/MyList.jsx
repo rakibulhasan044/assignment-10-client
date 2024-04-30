@@ -19,11 +19,9 @@ const MyList = () => {
 
     return (
         <div className="min-h-[calc(100vh-122px)]">
-            <h2>item mylist: {myList.length}</h2>
-            <h3>item state list: {list.length}</h3>
             <div className="flex items-center justify-center my-5">
                 <div className="dropdown dropdown-hover">
-                    <div tabIndex={0} role="button" className="btn m-1 px-10 bg-green-400 text-white">
+                    <div tabIndex={0} role="button" className="btn m-1 px-10 bg-green-400 dark:bg-[#893271] text-white">
                         Filter by customization
                     </div>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 gap-3">

@@ -28,33 +28,33 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className="dark:text-white">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/allArtCraft" className="dark:text-blue-600">
+        <NavLink to="/allArtCraft" className="dark:text-white">
           All craft Items
         </NavLink>
       </li>
       {
         user ? <>
         <li>
-        <NavLink to="/addCraft">Add Craft Item</NavLink>
+        <NavLink to="/addCraft" className="dark:text-white">Add Craft Item</NavLink>
       </li>
       <li>
-        <NavLink to={`/myArtCraft/${user.email}`}>My Craft List</NavLink>
+        <NavLink to={`/myArtCraft/${user.email}`} className="dark:text-white">My Craft List</NavLink>
       </li>
         </> : ''
       }
       <li>
-        <NavLink to="/login">Login</NavLink>
+        <NavLink to="/login" className="dark:text-white">Login</NavLink>
       </li>
       <li>
-        <NavLink to="/register">Register</NavLink>
+        <NavLink to="/register" className="dark:text-white">Register</NavLink>
       </li>
     </>
   );
   return (
-    <div className={`navbar`}>
+    <div className="navbar dark:bg-[#1f0d31]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -75,7 +75,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 dark:text-white"
           >
             {links}
           </ul>
