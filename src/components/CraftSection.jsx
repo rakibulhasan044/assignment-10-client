@@ -6,8 +6,7 @@ import { useState } from "react";
 const CraftSection = ({ crafts }) => {
     const [selectedCategory, setSelectedCategory] = useState('')
   return (
-    <div>
-      <h2>Our collection{crafts.length}</h2>
+    <div className="py-8 md:py-10 lg:py-16">
       <h2 className="text-3xl font-bold text-center">Our Category</h2>
       <div className="grid grid-cols-3 lg:grid-cols-6 py-2 font-semibold gap-3">
         <Link to ="/subcategory" className="hover:bg-orange-300 cursor-pointer text-center py-2 rounded-3xl">

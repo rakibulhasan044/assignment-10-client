@@ -76,7 +76,7 @@ const UpdateCraft = () => {
       setCustomization(e.target.value);
     }
     return (
-        <form onSubmit={handleSubmit} className="px-5 dark:bg-purple-950">
+        <form onSubmit={handleSubmit} className="px-5 dark:bg-purple-950 min-h-[calc(100vh-122px)]">
           <h1>{userName}</h1>
           <h2>{userEmail}</h2>
       <div className="flex flex-col md:flex-row gap-5">

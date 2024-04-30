@@ -18,7 +18,7 @@ const MyList = () => {
     };
 
     return (
-        <div>
+        <div className="min-h-[calc(100vh-122px)]">
             <h2>item mylist: {myList.length}</h2>
             <h3>item state list: {list.length}</h3>
             <div className="flex items-center justify-center my-5">

@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { ThemeProvider } from "../contexts/theme";
 import { useEffect, useState } from "react";
+import Footer from "../components/Footer";
 
 
 const Main = () => {
@@ -25,6 +26,7 @@ const Main = () => {
         <div className="container mx-auto dark:bg-neutral-900">
             <Navbar></Navbar>
             <Outlet/>
+            <Footer/>
         </div>
         </ThemeProvider>
     );

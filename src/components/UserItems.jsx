@@ -58,7 +58,6 @@ const UserItems = ({ item, list, setList, index }) => {
       return (
         <div className="flex flex-col md:flex-row gap-10 mt-5 px-5 md:px-10">
           <div className="h-[500px] lg:h-[506px] w-[380px] lg:w-[380px] border-8 border-black">
-            <p>{index}</p>
             <img className="h-[490px] lg:h-[490px] w-[380px] lg:w-[370px] border-8 border-white" src={photourl} alt="" />
             </div>
           <div className="space-y-2 flex-1 flex flex-col justify-center">

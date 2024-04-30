@@ -69,7 +69,7 @@ const AddCraft = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="px-5 dark:bg-purple-950">
+    <form onSubmit={handleSubmit} className="px-5 dark:bg-purple-950 min-h-[calc(100vh-122px)]">
       <div className="flex flex-col md:flex-row gap-5">
         <div className=" flex-1">
           <div className="form-control">

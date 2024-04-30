@@ -21,7 +21,7 @@ const CraftDetails = () => {
 
   const intRating = parseInt(rating);
   return (
-    <div className="flex flex-col md:flex-row gap-10 mt-5 px-5 md:px-10 py-10">
+    <div className="flex flex-col md:flex-row gap-10 mt-5 px-5 md:px-10 py-10 min-h-[calc(100vh-149px)]">
       <div className="h-[406px] lg:h-[506px] w-[316px] lg:w-[380px] border-8 border-black">
             <img className="h-[390px] lg:h-[490px] w-[300px] lg:w-[370px] border-8 border-white" src={photourl} alt="" />
             </div>

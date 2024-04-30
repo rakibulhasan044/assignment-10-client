@@ -32,7 +32,7 @@ const Register = () => {
 
   return (
     <div>
-      <div className="pt-20 min-h-screen bg-base-200">
+      <div className="pt-20 min-h-[calc(100vh-122px)] bg-base-200">
         <div className="hero-content">
           <div className="text-center lg:text-left"></div>
           <div className="card shrink-0 w-5/6  md:w-2/3 lg:w-3/5 shadow-2xl bg-base-100">
